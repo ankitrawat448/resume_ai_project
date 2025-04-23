@@ -1,0 +1,8 @@
+streamlit
+beautifulsoup4
+requests
+jinja2
+selenium
+webdriver-manager
+python-docx
+pypandoc

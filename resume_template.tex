@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{xcolor}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue,
+    linkcolor=black
+}
+
+\setlength{\parindent}{0pt}
+\titleformat{\section}{\large\bfseries\uppercase}{\thesection}{1em}{}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{((( name )))}}\\
+    ((( phone ))) \quad $|$ \quad ((( email ))) \quad $|$ \quad \href{https://((( linkedin )))}{((( linkedin )))} \quad $|$ \quad \href{https://((( website )))}{((( website )))}
+\end{center}
+
+\vspace{0.5em}
+
+\section*{Objective}
+((( objective )))
+
+\section*{Education}
+((* for edu in education *))
+\textbf{((( edu.degree )))}, ((( edu.school ))) \hfill ((( edu.dates )))\\
+((* endfor *))
+
+\section*{Skills}
+((( ", ".join(skills) )))
+
+\section*{Experience}
+((* for job in experience *))
+\textbf{((( job.title )))}, ((( job.company ))) \hfill ((( job.dates )))\\
+\textit{((( job.location | default("Remote") )))}
+\begin{itemize}[leftmargin=*]
+((* for bullet in job.description.splitlines() *))
+    \item ((( bullet.strip() )))
+((* endfor *))
+\end{itemize}
+((* endfor *))
+
+\section*{Projects}
+\begin{itemize}[leftmargin=*]
+((* for proj in projects *))
+    \item \textbf{((( proj.title )))} — ((( proj.description )))
+((* endfor *))
+\end{itemize}
+
+\section*{Certifications}
+\begin{itemize}[leftmargin=*]
+((* for cert in certifications *))
+    \item ((( cert )))
+((* endfor *))
+\end{itemize}
+
+\end{document}
